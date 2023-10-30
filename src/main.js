@@ -1,4 +1,10 @@
-console.log('Hello Webpack')
+import { str } from "@/add";
 
-const http = require('http')
+import App from "@/App";
 
+import { createApp } from "Vue";
+
+createApp(App).mount('#app');
+
+console.log("Hello Webpack");
+console.log(str);
