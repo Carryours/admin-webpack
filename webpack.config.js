@@ -38,6 +38,10 @@ module.exports = {
           },
         ],
       },
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //   type: 'asset',
+      // },
       {
         test: /\.(png|jpg|jpe?g|gif|webp)(\?.*)?$/,
         type: "asset",
@@ -45,7 +49,7 @@ module.exports = {
       },
       // {
       //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-      //   type: 'asset/resource',
+      //   type: 'asset',
       // },
     ],
   },
@@ -61,9 +65,9 @@ module.exports = {
     // contentBase: path.resolve(__dirname, "./dist"),
     port: 8080,
     historyApiFallback: true, // 支持History模式
-    // publicPath: "/"
     static: {
       directory: path.join(__dirname, "publick"),
+      // publicPath: "/serve-public-path-url",
     },
   },
 };
