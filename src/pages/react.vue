@@ -11,7 +11,6 @@ const msg: Ref<number> = ref(1);
 setInterval(() => {
   msg.value++;
 }, 1000);
-
 </script>
 <style scope>
 h1 {
