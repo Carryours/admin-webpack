@@ -2,6 +2,7 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
+const tailwindcss = require("tailwindcss");
 module.exports = {
   mode: "development", //开发环境
   entry: path.resolve(__dirname, "./src/main.ts"),
@@ -23,7 +24,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.tsx?$/, // ts or tsx
@@ -37,6 +38,15 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpg|jpe?g|gif|webp)(\?.*)?$/,
+        type: "asset",
+        generator: { filename: "img/[contenthash:8][ext][query]" },
+      },
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //   type: 'asset/resource',
+      // },
     ],
   },
   plugins: [
@@ -50,6 +60,7 @@ module.exports = {
   devServer: {
     // contentBase: path.resolve(__dirname, "./dist"),
     port: 8080,
+    historyApiFallback: true, // 支持History模式
     // publicPath: "/"
     static: {
       directory: path.join(__dirname, "publick"),
